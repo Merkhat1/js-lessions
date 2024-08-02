@@ -1,5 +1,13 @@
 import {len} from './len.js';
 
+function countChar(text) {
+    let charGroup = String.fromCharCode();
+
+    for (let a = 0; a !== len(text); a++) {
+        charGroup += text.charCodeAt(a);
+    }
+    return charGroup;
+}
 
 function argumTypeMismatch(firstText, secondText) {
     if (typeof firstText !== 'string' || typeof secondText !== 'string') {
@@ -9,12 +17,11 @@ function argumTypeMismatch(firstText, secondText) {
     return true;
 }
 
-
 /** возвращает булевый ответ равны ли параметры firstText и secondText. */
 export function isEqual(firstText, secondText) {
     argumTypeMismatch(firstText, secondText);
 
-    if (firstText !== secondText || len(firstText) !== len(secondText)) {
+    if (countChar(firstText) !== countChar(secondText) || len(firstText) !== len(secondText)) {
         return false;
     }
 
@@ -26,7 +33,7 @@ export function isEqual(firstText, secondText) {
 export function isNotEqual(firstText, secondText) {
     argumTypeMismatch(firstText, secondText);
 
-    if (firstText !== secondText || len(firstText) !== len(secondText)) {
+    if (countChar(firstText) !== countChar(secondText) || len(firstText) !== len(secondText)) {
         return true;
     }
 
@@ -38,11 +45,11 @@ export function isNotEqual(firstText, secondText) {
 export function isMore(firstText, secondText) {
     argumTypeMismatch(firstText, secondText);
 
-    if (firstText > secondText) {
+    if (countChar(firstText) > countChar(secondText)) {
         return true;
     }
 
-    if (firstText <= secondText) {
+    if (countChar(firstText) <= countChar(secondText)) {
         return false;
     }
 
@@ -56,11 +63,11 @@ export function isMore(firstText, secondText) {
 export function isLess(firstText, secondText) {
     argumTypeMismatch(firstText, secondText);
 
-    if (firstText < secondText) {
+    if (countChar(firstText) < countChar(secondText)) {
         return true;
     }
 
-    if (firstText >= secondText) {
+    if (countChar(firstText) >= countChar(secondText)) {
         return false;
     }
 
@@ -74,11 +81,11 @@ export function isLess(firstText, secondText) {
 export function isMoreOrEqual(firstText, secondText) {
     argumTypeMismatch(firstText, secondText);
 
-    if (firstText >= secondText) {
+    if (countChar(firstText) >= countChar(secondText)) {
         return true;
     }
 
-    if (firstText <= secondText) {
+    if (countChar(firstText) <= countChar(secondText)) {
         return false;
     }
 
@@ -92,11 +99,11 @@ export function isMoreOrEqual(firstText, secondText) {
 export function isLessOrEqual(firstText, secondText) {
     argumTypeMismatch(firstText, secondText);
 
-    if (firstText <= secondText) {
+    if (countChar(firstText) <= countChar(secondText)) {
         return true;
     }
 
-    if (firstText >= secondText) {
+    if (countChar(firstText) >= countChar(secondText)) {
         return false;
     }
 
